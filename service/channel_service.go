@@ -10,18 +10,18 @@ import (
 func NewChannelService() *ChannelService {
 	channelManager := repositories.NewChannelManager()
 	return &ChannelService{
-		ChannerReposioty: channelManager,
+		ChannerRepository: channelManager,
 	}
 }
 
 //ChannelService 频道服务
 type ChannelService struct {
-	ChannerReposioty *repositories.ChannelManager
+	ChannerRepository *repositories.ChannelManager
 }
 
 //CreateChannel 创建频道
 func (s *ChannelService) CreateChannel(channel *models.Channel) bool {
-	_, err := s.ChannerReposioty.Inset(channel)
+	_, err := s.ChannerRepository.Inset(channel)
 	if err != nil {
 		fmt.Println("频道创建失败")
 		return false
@@ -31,5 +31,5 @@ func (s *ChannelService) CreateChannel(channel *models.Channel) bool {
 
 //QeuryChannel 查询频道
 func (s *ChannelService) QeuryChannel(page int, pageSize int) (channelList []*models.Channel, count int64, err error) {
-	return s.ChannerReposioty.Select(page, pageSize)
+	return s.ChannerRepository.Select(page, pageSize)
 }

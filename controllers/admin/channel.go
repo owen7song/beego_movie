@@ -29,9 +29,7 @@ func (c *ChnnelController) Create() {
 	var ob models.Channel
 	body := c.Ctx.Input.RequestBody
 	json.Unmarshal(body, &ob)
-	ok := c.ChannelService.CreateChannel(&models.Channel{
-		Name: ob.Name,
-	})
+	ok := c.ChannelService.CreateChannel(&ob)
 	if ok {
 		c.Data["json"] = common.ResponseSuccess(nil)
 	} else {

@@ -22,7 +22,7 @@ type ChannelManager struct {
 	TableName string
 }
 
-//Inset 插入一条用户
+//Inset 插入一条数据
 func (m *ChannelManager) Inset(channel *models.Channel) (ID int64, err error) {
 	orm := orm.NewOrm()
 	timestamp := time.Now().Unix()
